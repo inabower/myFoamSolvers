@@ -1,0 +1,131 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     simpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         2000;
+
+deltaT          1;
+
+writeControl    timeStep;
+
+writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    directions
+    {
+        libs ("libutilityFunctionObjects.so");
+        type  coded;
+        name  directions;
+
+        codeInclude
+        #{
+            #include "topoSet.H"
+        #};
+
+        codeEnd
+        #{
+            Info << "coded Function Start" << endl;
+
+            vectorField& radialDirection = mesh().lookupObjectRef<vectorField>("radialDirection");
+            vectorField& angularDirection = mesh().lookupObjectRef<vectorField>("angularDirection");
+            vectorField& heightDirection = mesh().lookupObjectRef<vectorField>("heightDirection");
+
+            const word setType = "cellSet";
+            PtrList<topoSet> sets(2);
+            
+            sets.set
+            (
+                0,
+                topoSet::New
+                (
+                    setType,
+                    mesh(),
+                    "innerSet",
+                    IOobject::MUST_READ,
+                    IOobject::NO_WRITE
+                ).ptr()
+            );
+
+            Info << "innerSet have " << sets[0].size() << " cells" << endl;
+
+            sets.set
+            (
+                1,
+                topoSet::New
+                (
+                    setType,
+                    mesh(),
+                    "outerSet",
+                    IOobject::MUST_READ,
+                    IOobject::NO_WRITE
+                ).ptr()
+            );
+
+            Info << "outerSet have " << sets[1].size() << " cells" << endl;
+
+            forAllConstIter(labelHashSet, sets[0], iter)
+            {
+                const label& i = iter.key();
+                
+				radialDirection[i]  = vector( 1.0, 1.0, 0.0);
+				angularDirection[i] = vector(-1.0, 1.0, 0.0);
+				heightDirection[i]  = vector( 0.0, 0.0, 1.0);
+            }
+
+            forAllConstIter(labelHashSet, sets[1], iter)
+            {
+                const label& i = iter.key();
+
+                const vector& C = mesh().C()[i];
+                const scalar& x = C[0];
+                const scalar& y = C[1];
+                const scalar& z = C[2];
+
+                radialDirection[i]  = vector(  x,   y, 0.0);
+                angularDirection[i] = vector( -y,   x, 0.0);
+                heightDirection[i]  = vector(0.0, 0.0, 1.0);
+            }
+            
+			radialDirection /= Foam::max(mag(radialDirection), SMALL);
+			angularDirection /= Foam::max(mag(angularDirection), SMALL);
+			heightDirection /= Foam::max(mag(heightDirection), SMALL);
+        #};
+    }
+}
+// ************************************************************************* //

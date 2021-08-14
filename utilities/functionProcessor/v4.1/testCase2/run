@@ -1,0 +1,5 @@
+#!/bin/bash
+checkMesh 2>&1 | tee log.check
+functionProcessor -overwrite 2>&1 | tee log.fProc
+#To re-compile, you have to remove dynamicCode directory
+#rm -r dynamicCode

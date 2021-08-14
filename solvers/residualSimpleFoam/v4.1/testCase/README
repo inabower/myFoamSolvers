@@ -1,0 +1,5 @@
+This case is based on
+tutorials/incompressible/simpleFoam/pitzDaily
+
+Velocity is changed to point up residuals
+10m/s -> 100m/s

@@ -1,0 +1,165 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+22
+(
+    maxY
+    {
+        type        patch;
+        nFaces      40;
+        startFace   7860;
+    }
+    minY
+    {
+        type        wall;
+        inGroups    1(wall);
+        nFaces      40;
+        startFace   7900;
+    }
+    minXfirst
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   7940;
+    }
+    maxXfirst
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   8740;
+    }
+    minZfirst
+    {
+        type        patch;
+        nFaces      20;
+        startFace   9540;
+    }
+    maxZfirst
+    {
+        type        patch;
+        nFaces      20;
+        startFace   9560;
+    }
+    minXsecond
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   9580;
+    }
+    maxXsecond
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   10380;
+    }
+    minZsecond
+    {
+        type        patch;
+        nFaces      20;
+        startFace   11180;
+    }
+    maxZsecond
+    {
+        type        patch;
+        nFaces      20;
+        startFace   11200;
+    }
+    minXthird
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   11220;
+    }
+    maxXthird
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   12020;
+    }
+    minZthird
+    {
+        type        patch;
+        nFaces      20;
+        startFace   12820;
+    }
+    maxZthird
+    {
+        type        patch;
+        nFaces      20;
+        startFace   12840;
+    }
+    minXfourth
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   12860;
+    }
+    maxXfourth
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   13660;
+    }
+    minZfourth
+    {
+        type        patch;
+        nFaces      20;
+        startFace   14460;
+    }
+    maxZfourth
+    {
+        type        patch;
+        nFaces      20;
+        startFace   14480;
+    }
+    minXfifth
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   14500;
+    }
+    maxXfifth
+    {
+        type        empty;
+        inGroups    1(empty);
+        nFaces      800;
+        startFace   15300;
+    }
+    minZfifth
+    {
+        type        patch;
+        nFaces      20;
+        startFace   16100;
+    }
+    maxZfifth
+    {
+        type        patch;
+        nFaces      20;
+        startFace   16120;
+    }
+)
+
+// ************************************************************************* //

@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     chtMultiRegionFoam;
+
+startFrom       latestTime;
+
+startTime       1;
+
+stopAt          endTime;
+
+endTime         10000;
+
+deltaT          1;
+
+writeControl    runTime; //adjustableRunTime;
+
+writeInterval   10000;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+maxCo           0.47;
+
+// Maximum diffusion number
+maxDi           10;
+
+adjustTimeStep  no;
+
+functions
+{
+    probes
+    {
+        type               probes;
+        functionObjectLibs ("libsampling.so");
+        enabled            true;
+        outputControl      runTime;
+        outputInterval     10;
+        writeInterval      10;
+        region             third;
+        probeLocations
+        (
+            ( 0 0 0 )
+        );
+        fields
+        (
+            T
+        );
+    }
+}
+
+
+// ************************************************************************* //

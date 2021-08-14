@@ -1,0 +1,46 @@
+#!/bin/bash
+cd ${0%/*} || exit 1    # Run from this directory
+
+mkdir logs
+# Source tutorial run functions
+
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+cp -f system/controlDict.decompose system/controlDict
+runApplication checkMesh
+runApplication functionProcessor -overwrite
+
+cp -f system/controlDict.simple system/controlDict
+cp constant/turbulenceProperties.laminar constant/turbulenceProperties
+
+runApplication decomposePar -latestTime
+runParallel `getApplication`
+runApplication reconstructPar -latestTime
+rm -R ./processor*
+mv log.simpleFoam log.simpleFoam.laminar
+mv ./log.* ./logs/
+
+cp constant/turbulenceProperties.komega constant/turbulenceProperties
+lamDir=""
+for dirs in ./*; do
+  if [ -d $dirs ] ; then
+    str=`echo ${dirs} | awk -F "/" '{ print $NF }'`
+    if expr "$str" : '[0-9]*' > /dev/null ; then
+      if [ $dirs != "./0" ] ; then
+        lamDir=$dirs
+      fi
+    fi
+  fi
+done
+
+cp ./0/k $lamDir/k
+cp ./0/omega $lamDir/omega
+cp ./0/nut $lamDir/nut
+
+runApplication decomposePar -latestTime
+runParallel `getApplication`
+runApplication reconstructPar -latestTime
+rm -R ./processor*
+
+mv log.simpleFoam logs/log.simpleFoam.komega
+rm ./log.*

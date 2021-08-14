@@ -1,0 +1,126 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField      uniform 1e5;
+
+boundaryField
+{
+
+    maxY
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    minY
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    minXfirst
+    {
+        type            empty;
+    }
+    maxXfirst
+    {
+        type            empty;
+    }
+    minZfirst
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    maxZfirst
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    minXsecond
+    {
+        type            empty;
+    }
+    maxXsecond
+    {
+        type            empty;
+    }
+    minZsecond
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    maxZsecond
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    minXthird
+    {
+        type            empty;
+    }
+    maxXthird
+    {
+        type            empty;
+    }
+    minZthird
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    maxZthird
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    minXfourth
+    {
+        type            empty;
+    }
+    maxXfourth
+    {
+        type            empty;
+    }
+    minZfourth
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    maxZfourth
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    minXfifth
+    {
+        type            empty;
+    }
+    maxXfifth
+    {
+        type            empty;
+    }
+    minZfifth
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+    maxZfifth
+    {
+        type            calculated;
+        value           uniform 1e5;
+    }
+}
+
+// ************************************************************************* //

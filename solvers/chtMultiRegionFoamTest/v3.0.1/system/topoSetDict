@@ -1,0 +1,342 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    //first
+    {
+        name    firstCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.00101 -0.05001 -0.02001)(0.00101 -0.03001 0.02001);
+        }
+    }
+    {
+        name    first;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set firstCellSet;
+        }
+    }
+
+    //second
+    {
+        name    secondCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.00101 -0.02999 -0.02001)(0.00101 -0.01001 0.02001);
+        }
+    }
+    {
+        name    second;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set secondCellSet;
+        }
+    }
+
+    //third
+    {
+        name    thirdCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.00101 -0.00999 -0.02001)(0.00101 0.00999 0.02001);
+        }
+    }
+    {
+        name    third;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set thirdCellSet;
+        }
+    }
+
+    //fourth
+    {
+        name    fourthCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.00101 0.01001 -0.02001)(0.00101 0.02999 0.02001);
+        }
+    }
+    {
+        name    fourth;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set fourthCellSet;
+        }
+    }
+
+    //fifth
+    {
+        name    fifthCellSet;
+        type    cellSet;
+        action  new;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.00101 0.03001 -0.02001)(0.00101 0.05001 0.02001);
+        }
+    }
+    {
+        name    fifth;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set fifthCellSet;
+        }
+    }
+
+    //first
+    {
+        name    minXfirstFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.0010001 -0.05001 -0.02001)(-0.000999 -0.03001 0.02001);
+        }
+    }
+    {
+        name    maxXfirstFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (0.000999 -0.05001 -0.02001)(0.001001 -0.03001 0.02001);
+        }
+    }
+    {
+        name    minZfirstFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 -0.05001 -0.02001)(0.00101 -0.03001 -0.01999);
+        }
+    }
+    {
+        name    maxZfirstFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 -0.05001 0.01999)(0.00101 -0.03001 0.02001);
+        }
+    }
+
+    //second
+    {
+        name    minXsecondFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.0010001 -0.02999 -0.02001)(-0.000999 -0.01001 0.02001);
+        }
+    }
+    {
+        name    maxXsecondFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (0.000999 -0.02999 -0.02001)(0.001001 -0.01001 0.02001);
+        }
+    }
+    {
+        name    minZsecondFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 -0.02999 -0.02001)(0.00101 -0.01001 -0.01999);
+        }
+    }
+    {
+        name    maxZsecondFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 -0.02999 0.01999)(0.00101 -0.01001 0.02001);
+        }
+    }
+
+    //third
+    {
+        name    minXthirdFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.0010001 -0.00999 -0.02001)(-0.000999 0.00999 0.02001);
+        }
+    }
+    {
+        name    maxXthirdFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (0.000999 -0.00999 -0.02001)(0.001001 0.00999 0.02001);
+        }
+    }
+    {
+        name    minZthirdFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 -0.00999 -0.02001)(0.00101 0.00999 -0.01999);
+        }
+    }
+    {
+        name    maxZthirdFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 -0.00999 0.01999)(0.00101 0.00999 0.02001);
+        }
+    }
+
+    //fourth
+    {
+        name    minXfourthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.0010001 0.01001 -0.02001)(-0.000999 0.02999 0.02001);
+        }
+    }
+    {
+        name    maxXfourthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (0.000999 0.01001 -0.02001)(0.001001 0.02999 0.02001);
+        }
+    }
+    {
+        name    minZfourthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 0.01001 -0.02001)(0.00101 0.02999 -0.01999);
+        }
+    }
+    {
+        name    maxZfourthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 0.01001 0.01999)(0.00101 0.02999 0.02001);
+        }
+    }
+
+    //fifth
+    {
+        name    minXfifthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.0010001 0.03001 -0.02001)(-0.000999 0.05001 0.02001);
+        }
+    }
+    {
+        name    maxXfifthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (0.000999 0.03001 -0.02001)(0.001001 0.05001 0.02001);
+        }
+    }
+    {
+        name    minZfifthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 0.03001 -0.02001)(0.00101 0.05001 -0.01999);
+        }
+    }
+    {
+        name    maxZfifthFaceSet;
+        type    faceSet;
+        action  new;
+        source  boxToFace;
+        sourceInfo
+        {
+            box (-0.00101 0.03001 0.01999)(0.00101 0.05001 0.02001);
+        }
+    }
+);
+
+
+// ************************************************************************* //
