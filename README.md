@@ -1,12 +1,10 @@
-# myFoamSolvers
-
-今までに作成したOpenFOAMのソルバーとユーティリティを統合した。動作しない場合もあるかも。
+今までに作成したOpenFOAMのソルバーとユーティリティの一覧。動作しない場合もあるかも。
 
 # SOLVERS
 
 ## residualSimpleFoam
 
-- version : OpenFOAM-v4.1, OpenFOAM-v1806
+- version : **v4.1**, **v1806**
 - developed : https://github.com/inabower/OpenFOAM4.1-utilities , https://github.com/inabower/residualSimpleFoam
 - description : 
   - simpleFoamに対してpEqnとUEqnの残差を場として出力する機能を追加したもの。
@@ -14,7 +12,7 @@
 
 ## chtGlobalEnergyPimpleFoam
 
-- version : OpenFOAM-v3.0.1
+- version : **v3.0.1**
 - developed : https://github.com/inabower/OpenFOAM-3.0.1-solvers
 - description : 
   - 詳細：https://qiita.com/inabower/items/35834f10cf366c5e0ef5
@@ -22,12 +20,19 @@
   - splitMeshRegionsで分割した場合に出力されるファイルを読み込んで使用する
   - 並列計算には対応していない
 
+## chtMultiRegionSkipSolidFoam
+
+- version : **v1812**
+- developed : https://github.com/inabower/chtMultiRegionSkipSolidFoam
+- description : 
+  - solidの計算をたまにスキップするもの
+  - 時間スケールに対してsolidの領域の変化が少ない場合に使用する
 
 # UTILITIES
 
 ## faceDirection
 
-- version : OpenFOAM-v4.1
+- version : **v4.1**
 - developed : https://github.com/inabower/OpenFOAM4.1-utilities
 - description : 
   - 各patchの面方向の単位ベクトルを出力する。
@@ -35,7 +40,7 @@
 
 ## reverseSurface
 
-- version : OpenFOAM-v4.1
+- version : **v4.1**
 - developed : https://github.com/inabower/OpenFOAM4.1-utilities
 - description : 
   - STLファイルの面の向きを反転させる。
@@ -45,7 +50,7 @@
 
 ## manualDecomposition
 
-- version : OpenFOAM-v4.1
+- version : **v4.1**
 - developed : https://github.com/inabower/OpenFOAM4.1-utilities
 - description : 
   - decomposeParで分割する計算領域をより任意に分割するためのもの。
@@ -64,7 +69,7 @@
 
 ## functionProcessor
 
-- version : OpenFOAM-v4.1
+- version : **v4.1**
 - developed : https://github.com/inabower/OpenFOAM4.1-utilities
 - description : 
   - 上記の`manualDecomposition`をfunctionObjectとして実行するためのもの。
@@ -74,7 +79,7 @@
 
 ## makeDirection
 
-- version : OpenFOAM-v1812
+- version : **v1812**
 - developed : https://github.com/inabower/OpenFOAM_utilities
 - description : 
   - `functionProcessor`と同じく`codedFunctionObject`を使う前提のもの。
