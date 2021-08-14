@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ ! -d cases ]; then
+    mkdir cases
+fi
+
+newName=test_0
+n=0
+while [ -d cases/$newName ]; do
+  n=$(( $n + 1 ))
+  newName=test_$n
+done
+cp -r org cases/$newName
+cd cases/$newName
+
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+./Allrun
+touch ${newName}.foam
+
+echo ""
+echo "less log ? [y/N]"
+read ans
+if [ "$ans" = "y" ]; then
+  solverName=$(getApplication)
+  less log.$solverName
+fi
+
+echo "paraFoam ? [Y/n]"
+read ans
+if [ "$ans" != "n" ]; then
+  paraFoam -builtin
+fi
+#------------------------------------------------------------------------------
